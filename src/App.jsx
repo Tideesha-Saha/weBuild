@@ -7,7 +7,7 @@ import Header from './components/custom/Header'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+
   const {user, isLoaded, isSignedIn} = useUser();
 
   if(!isSignedIn && isLoaded)

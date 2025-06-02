@@ -14,13 +14,14 @@ import {
 import { Input } from "@/components/ui/input"
 import GlobalApi from "../../../service/GlobalApi";
 import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
 
 function AddResume() {
     const [openDialog, setOpenDialog]= useState(false);
     const [resumeTitle,setResumeTitle]=useState();
     const {user}=useUser();
     const [loading,setLoading]=useState(false);
-    const navigation = useNevigate();
+    const navigation = useNavigate();
 
     const onCreate=async()=>{
         setLoading(true);
@@ -48,7 +49,7 @@ function AddResume() {
 
   return (
     <div>
-      <div className="mt-5 border-3 border-dashed py-20 items-center flex justify-center bg-secondary rounded-lg h-[300px] cursor-pointer" 
+      <div className="mt-5 border-3 border-dashed py-20 items-center flex justify-center bg-secondary rounded-lg h-[300px] cursor-pointer hover:scale-105 transition-transform" 
       onClick={()=>setOpenDialog(true)}>
         <PlusSquare />
       </div>
