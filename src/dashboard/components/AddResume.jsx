@@ -20,6 +20,7 @@ function AddResume() {
     const [resumeTitle,setResumeTitle]=useState();
     const {user}=useUser();
     const [loading,setLoading]=useState(false);
+    const navigation = useNevigate();
 
     const onCreate=async()=>{
         setLoading(true);
@@ -35,9 +36,10 @@ function AddResume() {
         }
 
         GlobalApi.CreateNewResume(data).then(resp =>{
-            console.log(resp);
+            console.log(resp.data.data.documentId);
             if(resp){
                 setLoading(false);
+                navigation('/dashboard/resume/'+resp.data.data.documentId+"/edit");
             }
         }, (err)=>{
             setLoading(false)

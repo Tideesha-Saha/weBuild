@@ -10,7 +10,6 @@ Icon
 .Trashes
 ._*
 
-.env
 
 ############################
 # Linux
@@ -72,6 +71,7 @@ $RECYCLE.BIN/
 *.sqlite
 *.sqlite3
 
+.env
 
 ############################
 # Misc.
