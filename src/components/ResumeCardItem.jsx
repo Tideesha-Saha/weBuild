@@ -7,7 +7,7 @@ function ResumeCardItem({resume}){
     return(
         // <>Resume1</>
         <div className='hover:scale-105 transition-transform cursor-pointer'>
-            <Link to={'/dashboard/resume/'+resume.resumeId+"/edit"}>
+            <Link to={'/dashboard/resume/'+resume.documentId+"/edit"}>
               <div className='mt-5 p-14 bg-gradient-to-br from-[#1d8cf3] to-[#0d47ca]
  flex items-center justify-center h-[300px] border border-primary rounded-lg '>
                 <Notebook  color="white" />

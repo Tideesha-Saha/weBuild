@@ -21,7 +21,7 @@ function App() {
     
     <Header/>
     <Outlet/>
-
+    <Toaster />
     </>
     
 
