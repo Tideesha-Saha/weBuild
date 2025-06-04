@@ -12,11 +12,18 @@ function PersonalDetail({enabledNext}) {
     const params=useParams();
     const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext)
 
-    const [formData,setFormData]=useState();
+    const [formData,setFormData]=useState(resumeInfo || {});
     const [loading,setLoading]=useState(false);
-    useEffect(()=>{
-        console.log("---",resumeInfo)
-    },[])
+    // useEffect(()=>{
+    //     console.log("---",resumeInfo)
+    // },[])
+    useEffect(() => {
+    if (resumeInfo) {
+        setFormData(resumeInfo);
+    }
+    }, [resumeInfo]);
+
+    
 
     const handleInputChange=(e)=>{
         enabledNext(false)
@@ -34,10 +41,14 @@ function PersonalDetail({enabledNext}) {
 
     const onSave=(e)=>{
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
         const data={
             data:formData
         }
+        console.log("Sending data to Strapi:", data);
+
+        console.log("resumeId:", params?.resumeId);
+
         GlobalApi.UpdateResumeDetail(params?.resumeId,data).then(resp=>{
             console.log(resp);
             enabledNext(true);
