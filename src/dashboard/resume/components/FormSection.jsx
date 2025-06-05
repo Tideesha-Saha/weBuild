@@ -26,7 +26,7 @@ function FormSection() {
         </div>
       </div>
       {/* Personal Detail */}
-          {activeFormIndex==1?  <PersonalDetail enabledNext={setEnableNext}/> :null}
+          {activeFormIndex==1?  <PersonalDetail enabledNext={(v)=>setEnableNext(v)}/> :null}
       {/* Summery */}
 
       {/**Experience */}
