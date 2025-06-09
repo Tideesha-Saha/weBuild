@@ -20,7 +20,11 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // **Important: For production, secure your API key using environment variables.**
 // For development, keeping it here is functional but not recommended long-term.
-const API_KEY = "AIzaSyBNOGKca8WZngtrcGQh7ScxT4PmdSf3Rxw";
+// const API_KEY = "AIzaSyBNOGKca8WZngtrcGQh7ScxT4PmdSf3Rxw";  //API KEY OF Debarati
+
+// const API_KEY = import.meta.env.gemini_api_key; //API KEY OF Tideesha
+
+const API_KEY="AIzaSyCxhw9q7UiBOVOl9_qT0JHQFTBBZ8AS1Rc"
 
 // Initialize the Google Generative AI client
 const genAI = new GoogleGenerativeAI(API_KEY);

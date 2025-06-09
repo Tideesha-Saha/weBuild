@@ -17,7 +17,7 @@
 //   const [loading, setLoading] = useState(false);
 //   const params=useParams();
 
-//   const [aiGeneratedSummeryList, setAiGeneratedSummeryList]=useState();
+//   const [aiGeneratedSummaryList, setAiGeneratedSummaryList]=useState();
 
 //   useEffect(() => {
 //     summary &&
@@ -33,7 +33,7 @@
 //     console.log(PROMPT);
 //     const result=await AIChatSession.sendMessage(PROMPT);
 //     console.log(JSON.parse(result.response.text()));
-//     setAiGeneratedSummeryList(JSON.parse([result.response.text()]));
+//     setAiGeneratedSummaryList(JSON.parse([result.response.text()]));
 //     setLoading(false);
 //   }
 
@@ -108,9 +108,9 @@
 //           </div>
 //         </form>
 //       </div>
-//       {aiGeneratedSummeryList&& <div>
+//       {aiGeneratedSummaryList&& <div>
 //           <h2 className="font-bold text-lg">Suggestions</h2> 
-//           {aiGeneratedSummeryList.map((item, index)=>(
+//           {aiGeneratedSummaryList.map((item, index)=>(
 //             <div>
 //               <h2 className="font-bold my-1">Level: {item?.experienceLevel}</h2>
 //               <p>{item?.summary}</p>
@@ -145,19 +145,39 @@ function Summary({ enabledNext }) {
   const [loading, setLoading] = useState(false);
   const params = useParams();
 
-  const [aiGeneratedSummeryList, setAiGeneratedSummeryList] = useState([]); // Initialize as an empty array
+  const [aiGeneratedSummaryList, setAiGeneratedSummaryList] = useState([]); // Initialize as an empty array
+  const [haveClickedAIBtn, setHaveClickedAIBtn]=useState(false);
+
+  // useEffect(() => {
+  //   // Only update resumeInfo.summary if 'summary' state is not empty or null
+  //   if (summary) {
+  //     setResumeInfo({
+  //       ...resumeInfo,
+  //       summary: summary,
+  //     });
+  //   }
+  // }, [summary]); // Depend on 'summary' state
 
   useEffect(() => {
-    // Only update resumeInfo.summary if 'summary' state is not empty or null
-    if (summary) {
-      setResumeInfo({
-        ...resumeInfo,
-        summary: summary,
-      });
-    }
-  }, [summary]); // Depend on 'summary' state
+  if (resumeInfo?.summary && summary === '') {
+    setSummary(resumeInfo.summary);
+  }
+}, [resumeInfo?.summary]);
+
+
+useEffect(() => {
+  if (summary !== resumeInfo.summary) {
+    setResumeInfo({
+      ...resumeInfo,
+      summary,
+    });
+  }
+}, [summary]);
+
+
 
   const GenerateSummeryFromAI = async () => {
+    setHaveClickedAIBtn(true);
     setLoading(true);
     // Ensure jobTitle is available before proceeding
     if (!resumeInfo?.jobTitle) {
@@ -188,7 +208,7 @@ function Summary({ enabledNext }) {
       console.log("Parsed AI Response:", parsedResponse);
 
       // Assuming the AI returns an array of objects directly, as per your prompt
-      setAiGeneratedSummeryList(parsedResponse);
+      setAiGeneratedSummaryList(parsedResponse);
 
       // You might want to pre-fill the main summary textarea with one of the AI suggestions,
       // e.g., the 'Experienced' one, or the first one.
@@ -220,9 +240,7 @@ function Summary({ enabledNext }) {
       console.log(resp);
       enabledNext(true);
       setLoading(false);
-      toast.success("Details updated", {
-        className: "bg-green-100 text-green-900 border border-green-400",
-      });
+      toast.success("Details updated");
     } catch (error) {
       console.error("Error updating resume details:", error);
       setLoading(false);
@@ -234,11 +252,11 @@ function Summary({ enabledNext }) {
     <div>
       <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
         <h2 className="font-bold text-lg">Summary</h2>
-        <p>Add Summary for your job title</p>
+        <p className="text-sm font-semibold">Add Summary for your job title</p>
 
         <form className="mt-7" onSubmit={onSave}>
-          <div className="flex justify-between items-end">
-            <label htmlFor="">Add Summary</label>
+          <div className="flex justify-between items-center">
+            <label className="text-base font-semibold">Add Summary</label>
 
             {/* AI BUTTON */}
             <Button onClick={() => GenerateSummeryFromAI()} type="button"
@@ -248,7 +266,7 @@ function Summary({ enabledNext }) {
                  hover:scale-105 hover:brightness-110"
               disabled={loading} // Disable button while loading
             >
-              {loading ? (
+              {loading&&haveClickedAIBtn ? (
                 <LoaderCircle className="animate-spin mr-2" size={20} />
               ) : (
                 <svg
@@ -279,10 +297,10 @@ function Summary({ enabledNext }) {
           </div>
         </form>
       </div>
-      {aiGeneratedSummeryList.length > 0 && ( // Only render if there are suggestions
+      {aiGeneratedSummaryList.length > 0 && ( // Only render if there are suggestions
         <div className="mt-5 p-5 shadow-lg rounded-lg border-t-primary border-t-4">
           <h2 className="font-bold text-lg mb-3">AI Suggestions</h2>
-          {aiGeneratedSummeryList.map((item, index) => (
+          {aiGeneratedSummaryList.map((item, index) => (
             <div key={index} className="border p-3 rounded-md mb-3 bg-gray-50">
               <h3 className="font-bold my-1 text-primary">Level: {item?.experienceLevel}</h3>
               <p className="text-gray-700">{item?.summary}</p>

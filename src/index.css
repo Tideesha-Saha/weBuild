@@ -57,6 +57,44 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* .custom-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0%) brightness(0.3); 
+} */
+
+.custom-date-input {
+  position: relative;
+}
+
+.custom-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0%) brightness(0.5);
+  margin-left: -15px;  /* pull icon closer to text */
+  position:absolute;
+  right: 5%;              
+  padding: 0;
+  
+  float:right;
+  cursor: pointer; /* black icon for light mode */
+}
+
+.dark .custom-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1); 
+  margin-left: -15px;               /* pull icon closer to text */
+  float:right;
+  padding: 0;
+  cursor: pointer;/* white icon for dark mode */
+}
+
+.rsw-ce ul {
+  list-style: disc;
+  padding-left: 2em;
+}
+
+.rsw-ce ol {
+  list-style: decimal;
+  padding-left: 2em;
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

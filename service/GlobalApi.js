@@ -2,7 +2,7 @@
 // import axios from "axios";
 
 
-// const API_KEY = import.meta.env.VITE_STRAPI_API_KEY;
+const API_KEY = import.meta.env.VITE_STRAPI_API_KEY;
 // const axiosClient = axios.create({
 //   baseURL: "http://localhost:1337/api/",
 //   headers: {
@@ -40,7 +40,7 @@ const axiosClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
     // Add the Authorization header with your API token
-    'Authorization': `Bearer ${STRAPI_API_TOKEN}`
+    'Authorization': `Bearer ${API_KEY}`
   }
 });
 
@@ -48,11 +48,11 @@ const axiosClient = axios.create({
 //const UpdateResumeDetail = (resumeId, data) => axiosClient.put(`/user-resumes/${resumeId}`, data);
 //const CreateNewResume = (data) => axiosClient.post('/user-resumes', data); // Example for creating
 
-const CreateNewResume = (data) => axiosClient.post("/user-resume-2s", data);
+const CreateNewResume = (data) => axiosClient.post("/user-resumes", data);
 
-const GetUserResumes=(userEmail)=>axiosClient.get('/user-resume-2s?filters[userEmail][$eq]='+userEmail);
+const GetUserResumes=(userEmail)=>axiosClient.get('/user-resumes?filters[userEmail][$eq]='+userEmail);
 
-const UpdateResumeDetail=(id,data)=>axiosClient.put('/user-resume-2s/'+id,data)
+const UpdateResumeDetail=(id,data)=>axiosClient.put('/user-resumes/'+id,data)
 
 export default {
   CreateNewResume,

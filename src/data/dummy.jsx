@@ -107,11 +107,8 @@ export default {
       startDate: 'Jan 20XX',
       endDate: '',
       currentlyWorking: true,
-      worksummary:
-        '• Developed web applications using popular frameworks.\n' +
-        '• Maintained and improved legacy codebases.\n' +
-        '• Built REST APIs and integrated third-party services.\n' +
-        '• Participated in code reviews and team collaboration meetings.'
+      workSummary:
+        '• Developed web applications using popular frameworks.<br/> • Maintained and improved legacy codebases.<br />• Built REST APIs and integrated third-party services.\n<br/> • Participated in code reviews and team collaboration.'
     },
     {
       id: 2,
@@ -122,11 +119,14 @@ export default {
       startDate: 'Jun 20XX',
       endDate: 'Dec 20XX',
       currentlyWorking: false,
-      worksummary:
-        '• Designed and implemented UI components.\n' +
-        '• Ensured responsive design and cross-browser compatibility.\n' +
-        '• Worked closely with backend teams for smooth integration.\n' +
-        '• Optimized performance and load times.'
+      workSummary:
+        // '• Designed and implemented UI components.\n' +
+        // '• Ensured responsive design and cross-browser compatibility.\n' +
+        // '• Worked closely with backend teams for smooth integration.\n' +
+        // '• Optimized performance and load times.'
+      
+        '• Designed and implemented UI components.\n<br/> • Ensured responsive and cross-browser design\n<br/> • Worked with backend teams for smooth integration.\n<br/> • Optimized performance and load times.'
+
     }
   ],
   education: [

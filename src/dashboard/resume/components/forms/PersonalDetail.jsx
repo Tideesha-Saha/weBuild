@@ -48,10 +48,7 @@ function PersonalDetail({ enabledNext }) {
         enabledNext(true);
         setLoading(false);
         // toast("Details updated")
-        // toast.success("Details updated")
-        toast.success("Details updated", {
-          className: "bg-green-100 text-green-900 border border-green-400",
-        });
+        toast.success("Details updated");
       },
       (error) => {
         setLoading(false);
@@ -60,13 +57,15 @@ function PersonalDetail({ enabledNext }) {
   };
   return (
     <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-10">
-      <h2 className="font-bold text-lg">Personal Detail</h2>
-      <p>Get Started with the basic information</p>
+      <h2 className="font-bold text-xl">Personal Detail</h2>
+      <p className="text-sm font-semibold">
+        Get Started with the basic information
+      </p>
 
       <form onSubmit={onSave}>
         <div className="grid grid-cols-2 mt-5 gap-3">
           <div>
-            <label className="text-sm">First Name</label>
+            <label className="text-base font-semibold">First Name</label>
             <Input
               name="firstName"
               defaultValue={resumeInfo?.firstName}
@@ -75,7 +74,7 @@ function PersonalDetail({ enabledNext }) {
             />
           </div>
           <div>
-            <label className="text-sm">Last Name</label>
+            <label className="text-base font-semibold">Last Name</label>
             <Input
               name="lastName"
               required
@@ -84,7 +83,7 @@ function PersonalDetail({ enabledNext }) {
             />
           </div>
           <div className="col-span-2">
-            <label className="text-sm">Job Title</label>
+            <label className="text-base font-semibold">Job Title</label>
             <Input
               name="jobTitle"
               required
@@ -93,7 +92,7 @@ function PersonalDetail({ enabledNext }) {
             />
           </div>
           <div className="col-span-2">
-            <label className="text-sm">Address</label>
+            <label className="text-base font-semibold">Address</label>
             <Input
               name="address"
               required
@@ -102,7 +101,7 @@ function PersonalDetail({ enabledNext }) {
             />
           </div>
           <div>
-            <label className="text-sm">Phone</label>
+            <label className="text-base font-semibold">Phone</label>
             <Input
               name="phone"
               required
