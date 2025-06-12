@@ -42,11 +42,11 @@ export default function RichTextEditor({ onRichTextEditorChange, index}) {
   const GenerateSummaryFromAI=async()=>{
     setHaveClickedAIBtn(true);
     setLoading(true);
-    if(!resumeInfo.experience[index].title){
+    if(!resumeInfo.Experience[index].title){
       toast.error("Please Enter Position Title");
       return;
     }
-    const prompt=PROMPT.replace('{positiontitle}',resumeInfo.experience[index].title);
+    const prompt=PROMPT.replace('{positiontitle}',resumeInfo.Experience[index].title);
        const result = await AIChatSession.sendMessage(prompt);
        console.log(result.response.text());
        const resp=result.response.text();

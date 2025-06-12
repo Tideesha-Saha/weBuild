@@ -97,28 +97,24 @@ export default {
   email: 'john.doe@example.com',
   themeColor: "#1E40AF",
   summary: 'Passionate developer with experience in building and maintaining full-stack applications. Skilled in modern frameworks and focused on delivering clean, maintainable code.',
-  experience: [
+  Experience: [
     {
-      id: 1,
       title: 'Software Developer',
       companyName: 'Tech Solutions Inc.',
       city: 'Sample City',
       state: 'Test State',
       startDate: 'Jan 20XX',
       endDate: '',
-      currentlyWorking: true,
       workSummary:
         '• Developed web applications using popular frameworks.<br/> • Maintained and improved legacy codebases.<br />• Built REST APIs and integrated third-party services.\n<br/> • Participated in code reviews and team collaboration.'
     },
     {
-      id: 2,
       title: 'Frontend Engineer',
       companyName: 'Innovatech Ltd.',
       city: 'Mocktown',
       state: 'Testland',
       startDate: 'Jun 20XX',
       endDate: 'Dec 20XX',
-      currentlyWorking: false,
       workSummary:
         // '• Designed and implemented UI components.\n' +
         // '• Ensured responsive design and cross-browser compatibility.\n' +

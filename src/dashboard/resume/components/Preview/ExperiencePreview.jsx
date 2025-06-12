@@ -8,7 +8,7 @@ function ExperiencePreview({ resumeInfo }) {
       </h4>
 
       <div className="font-normal text-xs">
-        {resumeInfo?.experience.map((exp, index) => (
+        {resumeInfo?.Experience.map((exp, index) => (
           <div key={index} className="space-y-1">
             <div className="pt-3 flex justify-between items-center">
               <h3 className="text-sm font-semibold">{exp.title}</h3>
