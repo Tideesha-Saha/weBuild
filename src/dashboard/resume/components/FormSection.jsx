@@ -36,7 +36,7 @@ function FormSection() {
         {activeFormIndex==3? <Experience enabledNext={(v)=>setEnableNext(v)}/>:null}
 
       {/** Educational Detail */}
-      {activeFormIndex==3? <Experience enabledNext={(v)=>setEnableNext(v)}/>:null}
+      {activeFormIndex==4? <Education enabledNext={(v)=>setEnableNext(v)}/>:null}
       {/** Skills */}
     </div>
   )
