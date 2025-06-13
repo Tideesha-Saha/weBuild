@@ -14,12 +14,12 @@ function SkillsPreview({ resumeInfo }) {
               <span className="text-sm font-medium text-gray-900">
                 {skill.name}
               </span>
-              <span className="text-sm text-gray-600">{skill.rating}%</span>
+              <span className="text-sm text-gray-600">{skill.rating * 20}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div
                 className=" h-2.5 rounded-full"
-                style={{ backgroundColor: resumeInfo? resumeInfo.themeColor:"black", width: `${skill.rating}%` }}
+                style={{ backgroundColor: resumeInfo? resumeInfo.themeColor:"black", width: `${skill.rating * 20}%` }}
               ></div>
             </div>
           </div>

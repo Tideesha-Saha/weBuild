@@ -149,24 +149,20 @@ export default {
   ],
   skills: [
     {
-      id: 1,
       name: 'JavaScript',
-      rating: 85,
+      rating: 4,
     },
     {
-      id: 2,
       name: 'React',
-      rating: 90,
+      rating: 5,
     },
     {
-      id: 3,
       name: 'Node.js',
-      rating: 80,
+      rating: 4,
     },
     {
-      id: 4,
       name: 'MongoDB',
-      rating: 75,
+      rating: 4,
     }
   ]
 }

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import Summary from './forms/Summary';
 import Experience from './forms/Experience';
 import Education from './forms/Education';
+import Skills from './forms/Skills';
 
 function FormSection() {
   const [activeFormIndex,setActiveFormIndex]=useState(1);
@@ -38,6 +39,7 @@ function FormSection() {
       {/** Educational Detail */}
       {activeFormIndex==4? <Education enabledNext={(v)=>setEnableNext(v)}/>:null}
       {/** Skills */}
+      {activeFormIndex==5? <Skills enabledNext={(v)=>setEnableNext(v)}/>:null}
     </div>
   )
 }
