@@ -4,7 +4,7 @@ import React from "react";
 function PersonalDetailsPreview({ resumeInfo }) {
   return (
     <div>
-      <div className="heading bg-secondary py-10 pl-5"       
+      <div className="heading bg-primary-foreground py-10 pl-5"       
       style={{
         // backgroundColor: resumeInfo?.themeColor,
         backgroundColor:"#1E40AF",

@@ -28,7 +28,10 @@ function EditResume(){
             {/* Form Section */}
             <FormSection/>
             {/* Resume Section */}
+
+            <div className='px-2 py-10'>
             <ResumePreview/>
+            </div>
         </div>
         </ResumeInfoContext.Provider>
     )

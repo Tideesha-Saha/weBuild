@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+@media print{
+  #no-print-area{
+    display: none;
+  }
+  #print-area{
+    display: block;
+     margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body{
+    margin: 0 !important;
+    padding:0 !important;
+    box-shadow: none !important;
+  }
+  
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+@page{
+  size: A4;
+  margin: 0;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
