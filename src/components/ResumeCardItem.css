@@ -1,0 +1,21 @@
+.resume-icon {
+   /* border:2px solid white */
+   /* -webkit-text-stroke: 2px green; */
+  width: 40px; /* Adjust size as needed */
+  height: auto;
+  position: absolute;
+  top: 12px;
+  /* margin-left: 5px; */
+  /* left: 12px; */
+  /* filter:
+    drop-shadow(0 -2px 0 white)
+    drop-shadow(0 2px 0 white)
+    drop-shadow(-2px 0 0 white)
+    drop-shadow(2px 0 0 white)
+    drop-shadow(-1.5px -1.5px 0 white)
+    drop-shadow(1.5px -1.5px 0 white)
+    drop-shadow(-1.5px 1.5px 0 white)
+    drop-shadow(1.5px 1.5px 0 white); */
+
+    transition: none !important;
+}
