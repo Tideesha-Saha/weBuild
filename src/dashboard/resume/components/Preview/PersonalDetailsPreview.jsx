@@ -6,7 +6,8 @@ function PersonalDetailsPreview({ resumeInfo }) {
     <div>
       <div className="heading bg-secondary py-10 pl-5"       
       style={{
-        backgroundColor: resumeInfo?.themeColor,
+        // backgroundColor: resumeInfo?.themeColor,
+        backgroundColor:"#1E40AF",
         color: resumeInfo? "white": "black"
       }}>
         <h2 className="font-bold text-3xl tracking-wide uppercase">
