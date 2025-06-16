@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import GlobalApi from "../../../../service/GlobalApi";
+import dummy from "@/data/dummy";
 
 function ViewResume() {
   const { resumeId } = useParams();
@@ -14,11 +15,44 @@ function ViewResume() {
     GetResumeInfo();
   }, []);
 
-  const GetResumeInfo = () => {
+  // const GetResumeInfo = () => {
+  //   GlobalApi.GetResumeById(resumeId).then((resp) => {
+  //     setResumeInfo(resp.data.data);
+  //   });
+  // };
+
+
+   const GetResumeInfo = () => {
     GlobalApi.GetResumeById(resumeId).then((resp) => {
       setResumeInfo(resp.data.data);
+      console.log(resp.data.data);
+
+       const resumeData = resp.data.data;
+       const isNewResume =
+        (!resumeData.education || resumeData.education.length === 0) &&
+        (!resumeData.education || resumeData.education.length === 0) &&
+        (!resumeData.education || resumeData.education.length === 0) &&
+        (!resumeData.Experience || resumeData.Experience.length === 0) &&
+        (!resumeData.skills || resumeData.skills.length === 0);
+
+        if (isNewResume) {
+        console.log("✅ This is a newly created resume");
+        setResumeInfo({
+        ...resumeData,
+        ...dummy, // this will override personal details, education, etc.
+      });
+        }
+        else{
+            // setResumeInfo(resp.data.data);
+            
+            setResumeInfo({
+            ...resumeData,
+            ...resumeData, // this will override personal details, education, etc.
+            });
+        }
     });
   };
+
 
   const HandleDownload = () => {
     window.print();
