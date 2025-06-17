@@ -8,6 +8,7 @@ import Experience from "./forms/Experience";
 import Education from "./forms/Education";
 import Skills from "./forms/Skills";
 import ViewResume from "@/my-resume/[resumeId]/view";
+import ThemeColor from "./ThemeColor";
 
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
@@ -16,18 +17,15 @@ function FormSection() {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <div className="flex gap-0.5 items-center">
+        <div className="flex gap-2 items-center">
+          
           <Link to={"/dashboard"}>
-            <Button>
+            <Button className="w-5">
               <Home />
             </Button>
           </Link>
 
-          <button variant="outline" size="sm" className="flex gap-2">
-            {" "}
-            <LayoutGrid />
-            Theme
-          </button>
+          <ThemeColor/>
         </div>
 
         <div className="flex gap-2">

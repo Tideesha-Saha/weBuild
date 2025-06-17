@@ -3,6 +3,8 @@ import React from "react";
 function SkillsPreview({ resumeInfo }) {
   if (!resumeInfo?.skills || resumeInfo.skills.length === 0) return null;
 
+   const themeColor = resumeInfo?.themeColor || "#1a6aff";
+
   return (
     <div className="pt-7">
       <h4 className="font-bold text-base tracking-wide uppercase">Skills</h4>
@@ -20,7 +22,7 @@ function SkillsPreview({ resumeInfo }) {
               <div
                 className=" h-2.5 rounded-full"
                 // style={{ backgroundColor: resumeInfo? resumeInfo.themeColor:"black", width: `${skill.rating * 20}%` }}
-                style={{ backgroundColor: "#1E40AF", width: `${skill.rating * 20}%` }}
+                style={{ backgroundColor: themeColor, width: `${skill.rating * 20}%` }}
               ></div>
             </div>
           </div>

@@ -6,10 +6,14 @@ import { useParams } from "react-router-dom";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import GlobalApi from "../../../../service/GlobalApi";
 import dummy from "@/data/dummy";
+import { Loader2 } from "lucide-react";
 
 function ViewResume() {
   const { resumeId } = useParams();
   const [resumeInfo, setResumeInfo] = useState();
+  const [pageLoading, setPageLoading] = useState(true);
+  
+
 
   useEffect(() => {
     GetResumeInfo();
@@ -26,10 +30,13 @@ function ViewResume() {
     GlobalApi.GetResumeById(resumeId).then((resp) => {
       setResumeInfo(resp.data.data);
       console.log(resp.data.data);
+       setPageLoading(false);
 
        const resumeData = resp.data.data;
        const isNewResume =
-        (!resumeData.education || resumeData.education.length === 0) &&
+        (!resumeData.firstName) && (!resumeData.lastName) &&
+        (!resumeData.jobTitle) && (!resumeData.phone) &&
+        (!resumeData.address) && (!resumeData.email) &&
         (!resumeData.education || resumeData.education.length === 0) &&
         (!resumeData.education || resumeData.education.length === 0) &&
         (!resumeData.Experience || resumeData.Experience.length === 0) &&
@@ -75,6 +82,16 @@ function ViewResume() {
       alert("Link copied to clipboard! You can share it manually.");
     }
   };
+
+    if (pageLoading) {
+    return (
+      <div className="flex justify-center items-center h-50 w-screen gap-2">
+        <Loader2 className="animate-spin h-20 w-20 text-blue-500" />
+        <div>Please Wait...</div>
+      </div>
+    );
+  }
+
 
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>

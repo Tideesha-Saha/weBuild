@@ -2,12 +2,13 @@ import React from "react";
 // import './PersonalDetailsPreview.css'
 
 function PersonalDetailsPreview({ resumeInfo }) {
+  const themeColor = resumeInfo?.themeColor || "#1a6aff";  // fallback color
   return (
     <div>
-      <div className="heading bg-primary-foreground py-10 pl-5"       
+      <div className="heading py-10 pl-5"       
       style={{
-        // backgroundColor: resumeInfo?.themeColor,
-        backgroundColor:"#1E40AF",
+        backgroundColor: themeColor,
+        // backgroundColor:"#1E40AF",
         color: resumeInfo? "white": "black"
       }}>
         <h2 className="font-bold text-3xl tracking-wide uppercase">

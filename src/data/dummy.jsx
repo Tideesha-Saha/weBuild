@@ -95,7 +95,7 @@ export default {
   address: '123 Main Street, Sample City, Test State',
   phone: '+91 00000 00000',
   email: 'john.doe@example.com',
-  themeColor: "#1E40AF",
+  themeColor: "#1a6aff",
   summary: 'Passionate developer with experience in building and maintaining full-stack applications. Skilled in modern frameworks and focused on delivering clean, maintainable code.',
   Experience: [
     {

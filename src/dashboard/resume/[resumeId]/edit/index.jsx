@@ -5,10 +5,14 @@ import ResumePreview from '../../components/ResumePreview';
 import { ResumeInfoContext } from '@/context/ResumeInfoContext';
 import dummy from '@/data/dummy';
 import GlobalApi from '../../../../../service/GlobalApi';
+import { Loader2 } from 'lucide-react';
 
 function EditResume(){
     const {resumeId} = useParams();
     const [resumeInfo,setResumeInfo]=useState();
+
+     const [pageLoading, setPageLoading] = useState(true);
+
    
     useEffect(() => {
         // setResumeInfo(dummy);
@@ -29,6 +33,7 @@ function EditResume(){
         GlobalApi.GetResumeById(resumeId).then((resp) => {
           setResumeInfo(resp.data.data);
           console.log(resp.data.data);
+           setPageLoading(false);
     
            const resumeData = resp.data.data;
            const isNewResume =
@@ -58,6 +63,14 @@ function EditResume(){
         });
       };
 
+    if (pageLoading) {
+    return (
+      <div className="flex justify-center items-center h-50 w-screen gap-2">
+        <Loader2 className="animate-spin h-20 w-20 text-blue-500" />
+        <div>Please Wait...</div>
+      </div>
+    );
+  }
 
 
     return(
