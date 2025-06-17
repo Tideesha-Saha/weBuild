@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import {
+  Delete,
+  Download,
+  Edit,
+  Edit2,
   EllipsisVertical,
+  Eye,
   Loader2Icon,
   LoaderCircle,
   MoveVertical,
   Navigation,
   Notebook,
+  Trash,
+  Trash2,
+  View,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import "./ResumeCardItem.css";
@@ -81,20 +89,22 @@ function ResumeCardItem({ resume, refreshData }) {
               <DropdownMenuContent>
 
                 <DropdownMenuItem onClick={() => navigation("/dashboard/resume/" + resume.documentId + "/edit" ) }>
-                  Edit
+                  <Edit className="w-4"/> Edit
                 </DropdownMenuItem>
 
 
                 <DropdownMenuItem onClick={() =>navigation("/my-resume/" + resume.documentId + "/view") }>
-                 View
+                 <Eye  className="w-4"/> View
                 </DropdownMenuItem>
 
               
                 <DropdownMenuItem onClick={() =>navigation("/my-resume/" + resume.documentId + "/view") }>
-                  Download
+                 <Download  className="w-4"/>  Download
                 </DropdownMenuItem>
 
-                <DropdownMenuItem onClick={()=>setOpenAlert(true)}>Delete</DropdownMenuItem>
+                <DropdownMenuItem onClick={()=>setOpenAlert(true)}>
+                 <Trash2  className="w-4"/> Delete
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 

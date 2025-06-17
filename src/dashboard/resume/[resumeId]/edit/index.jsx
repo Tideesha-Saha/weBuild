@@ -65,9 +65,9 @@ function EditResume(){
 
     if (pageLoading) {
     return (
-      <div className="flex justify-center items-center h-50 w-screen gap-2">
+      <div className="flex justify-center items-center h-50 w-screen gap-4">
         <Loader2 className="animate-spin h-20 w-20 text-blue-500" />
-        <div>Please Wait...</div>
+        <div>Displaying Resume...</div>
       </div>
     );
   }

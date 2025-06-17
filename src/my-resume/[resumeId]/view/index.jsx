@@ -2,11 +2,11 @@ import Header from "@/components/custom/Header";
 import { Button } from "@/components/ui/button";
 import ResumePreview from "@/dashboard/resume/components/ResumePreview";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import GlobalApi from "../../../../service/GlobalApi";
 import dummy from "@/data/dummy";
-import { Loader2 } from "lucide-react";
+import { Download, Edit, Loader2, Share } from "lucide-react";
 
 function ViewResume() {
   const { resumeId } = useParams();
@@ -106,9 +106,14 @@ function ViewResume() {
             <p className="text-center mt-2 text-sm md:text-xl text-gray-600">
               You can now download your resume or share it using the link below.
             </p>
-            <div className="flex justify-evenly my-5">
-              <Button onClick={HandleDownload}>Download</Button>
-              <Button onClick={handleShare}>Share</Button>
+            <div className="flex justify-center gap-5 my-5">
+              <Link to={"/dashboard/resume/"+resumeId+"/edit"}>
+                <Button className="">
+                  <Edit /> <span>Edit</span>
+                </Button>
+              </Link>
+              <Button onClick={HandleDownload}> <Download/> Download</Button>
+              <Button onClick={handleShare}> <Share/>  Share</Button>
             </div>
           </div>
         </div>
