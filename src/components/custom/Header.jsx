@@ -7,7 +7,7 @@ import Dashboard from '@/dashboard';
 function Header() {
   const { user, isSignedIn }= useUser();
   return (
-    <div className='p-3 px-5 flex justify-between shadow-md'>
+    <div className='p-3 px-5 flex justify-between shadow-md z-99'>
         <img src="/webuild_Logo.svg" alt="" width="100" />
        
 
