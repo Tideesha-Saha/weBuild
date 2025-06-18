@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Palette } from "lucide-react";
+import { Loader2, Palette } from "lucide-react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
@@ -21,25 +21,49 @@ export default function ThemeColor() {
     const [color, setColor] = useColor("#1a6aff");
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
     const {resumeId}=useParams();
+    const [loading,setLoading]=useState(false);
 
-    const handleColorChange=(newColor)=>{
-       setColor(newColor);
-      //  console.log(newColor);
-        setResumeInfo({
+    const handleSelect=(newColor)=>{
+      setColor(newColor);
+      setResumeInfo({
         ...resumeInfo,
         themeColor: newColor.hex,
         });
 
+    }
+
+
+    const handleColorChange= async ()=>{
+      setLoading(true);
+      toast("Please Wait till color is updated");
+      //  setColor(newColor);
+       console.log(color);
+        setResumeInfo({
+        ...resumeInfo,
+        themeColor: color.hex,
+        });
+
         const data={
           data:{
-            themeColor:newColor.hex
+            themeColor:color.hex
           }
         }
 
-        GlobalApi.UpdateResumeDetail(resumeId,data).then(resp=>{
-          console.log(resp);
-          // toast.success("Theme Color Updated!");
-        })
+        // GlobalApi.UpdateResumeDetail(resumeId,data).then(resp=>{
+        //   console.log(color);
+        //   console.log(resp);
+        //   toast.success("Theme Color Updated!");
+        // })
+            try { 
+                  await GlobalApi.UpdateResumeDetail(resumeId, data);
+                  console.log(color);
+                  toast.success("Theme Color Updated!");
+                  setLoading(false);
+              } catch (err) {
+                  toast.error("Failed to update color.");
+                  setLoading(false);
+          }
+
   
     }
     
@@ -55,7 +79,8 @@ export default function ThemeColor() {
           
           </PopoverTrigger>
       <PopoverContent>
-        <ColorPicker color={color} onChange={handleColorChange} height={150} hideInput={["rgb", "hsv"]}/>
+        <ColorPicker color={color} onChange={handleSelect} height={150} hideInput={["rgb", "hsv"]}/>
+        <Button onClick={handleColorChange} className="mt-2 hover:scale-105"> {loading?<Loader2 className="animate-spin"/>:"Done"}</Button>
             
       </PopoverContent>
     </Popover>
